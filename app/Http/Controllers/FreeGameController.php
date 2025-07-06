@@ -12,7 +12,7 @@ class FreeGameController extends Controller
      */
     public function index()
     {
-        //
+        return FreeGame::all();
     }
 
     /**
