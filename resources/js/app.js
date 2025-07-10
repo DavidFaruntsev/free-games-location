@@ -3,4 +3,8 @@ import { createApp } from 'vue';
 import GameList from './components/GameList.vue';
 import '../css/app.css';
 
-createApp(GameList).mount('#app');
+const el = document.getElementById('game-list-root');
+
+if (el) {
+    createApp({}).component('game-list', GameList).mount(el);
+}
