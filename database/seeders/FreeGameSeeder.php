@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\FreeGame;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class FreeGameSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class FreeGameSeeder extends Seeder
      */
     public function run(): void
     {
-        FreeGame::factory(5)->create();
+        Artisan::call('freegame:update-free-games');
     }
 }

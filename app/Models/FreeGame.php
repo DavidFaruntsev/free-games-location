@@ -18,7 +18,7 @@ class FreeGame extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'api_id',
+        'game_id',
         'title',
         'thumbnail',
         'short_description',

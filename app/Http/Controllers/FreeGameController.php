@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FreeGameResource;
 use App\Models\FreeGame;
+use App\services\FreeToGameService;
 use Illuminate\Http\Request;
 
 class FreeGameController extends Controller
@@ -12,7 +14,8 @@ class FreeGameController extends Controller
      */
     public function index()
     {
-        return FreeGame::all();
+        $allFreeGames = FreeGame::paginate(15);
+        return FreeGameResource::collection($allFreeGames);
     }
 
     /**

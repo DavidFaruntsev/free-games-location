@@ -2,8 +2,7 @@
     <div class="p-4 border rounded shadow">
         <h2>{{ game.title }}</h2>
 
-        <p>{{ game.description }}</p>
-        <p>{{ game.developer }}</p>
+        <p>{{ game.short_description }}</p>
         <p>{{ game.genre }}</p>
     </div>
 </template>

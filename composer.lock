@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f67300b80393d0402f8cc685316d96b",
+    "content-hash": "f4bb31932410de205085e28fd091ed0c",
     "packages": [
         {
             "name": "brick/math",
@@ -2570,6 +2570,129 @@
                 }
             ],
             "time": "2025-05-08T08:14:37+00:00"
+        },
+        {
+            "name": "phpexperts/datatype-validator",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPExpertsInc/DataTypeValidator.git",
+                "reference": "703c59823ed81ce11ff986afc7116b2b18ed404f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPExpertsInc/DataTypeValidator/zipball/703c59823ed81ce11ff986afc7116b2b18ed404f",
+                "reference": "703c59823ed81ce11ff986afc7116b2b18ed404f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "nesbot/carbon": "^2.37",
+                "phpbench/phpbench": "*",
+                "phpexperts/dockerize": "^12.0",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": "9.*",
+                "symfony/var-dumper": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPExperts\\DataTypeValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP Experts, Inc.",
+                    "homepage": "https://www.phpexperts.pro/"
+                },
+                {
+                    "name": "Theodore R. Smith",
+                    "homepage": "https://www.linkedin.com/in/tedrsmith"
+                }
+            ],
+            "description": "An easy to use data type validator (both strict and fuzzy).",
+            "keywords": [
+                "data type",
+                "data type validator",
+                "datatype",
+                "datatype validator",
+                "validation",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPExpertsInc/DataTypeValidator/issues",
+                "source": "https://github.com/PHPExpertsInc/DataTypeValidator/tree/v3.1.0"
+            },
+            "time": "2025-06-27T05:51:48+00:00"
+        },
+        {
+            "name": "phpexperts/simple-dto",
+            "version": "v3.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPExpertsInc/SimpleDTO.git",
+                "reference": "34286e756e4cdea0d6909c0ae2897ba590853072"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPExpertsInc/SimpleDTO/zipball/34286e756e4cdea0d6909c0ae2897ba590853072",
+                "reference": "34286e756e4cdea0d6909c0ae2897ba590853072",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "nesbot/carbon": "2.*|3.*",
+                "php": ">=7.4",
+                "phpexperts/datatype-validator": "^1.8|^3.0"
+            },
+            "require-dev": {
+                "phpexperts/dockerize": "^13.0",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": "8.*|9.*|^10.5.32|11.*|12.*",
+                "povils/phpmnd": "^3.6",
+                "squizlabs/php_codesniffer": "*",
+                "symfony/var-dumper": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPExperts\\SimpleDTO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP Experts, Inc.",
+                    "homepage": "https://www.phpexperts.pro/"
+                },
+                {
+                    "name": "Theodore R. Smith",
+                    "homepage": "https://www.linkedin.com/in/tedrsmith"
+                }
+            ],
+            "description": "A quick and easy DTO package.",
+            "homepage": "https://www.phpexperts.pro/",
+            "keywords": [
+                "api",
+                "data transfer objects",
+                "dto",
+                "restful"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPExpertsInc/SimpleDTO/issues",
+                "source": "https://github.com/PHPExpertsInc/SimpleDTO/tree/v3.9.1"
+            },
+            "time": "2025-04-17T11:33:20+00:00"
         },
         {
             "name": "phpoption/phpoption",

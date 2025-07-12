@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('free_games', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('api_id')->unique();
+            $table->unsignedBigInteger('game_id')->unique();
             $table->string('title');
             $table->string('thumbnail')->nullable();
-            $table->string('short_description')->nullable();
+            $table->text('short_description')->nullable();
             $table->string('game_url');
             $table->string('genre')->nullable();
             $table->string('platform')->nullable();
