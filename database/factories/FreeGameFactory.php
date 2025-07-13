@@ -17,7 +17,7 @@ class FreeGameFactory extends Factory
     public function definition(): array
     {
         return [
-            'game_id' => fake()->numberBetween(1000, 9999),
+            'id' => fake()->numberBetween(1000, 9999),
             'title' => fake()->sentence(3),
             'thumbnail' => fake()->imageUrl(640, 480, 'games', true),
             'short_description' => fake()->text(150),

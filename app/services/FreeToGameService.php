@@ -2,7 +2,6 @@
 
 namespace App\services;
 
-use App\Models\FreeGame;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
