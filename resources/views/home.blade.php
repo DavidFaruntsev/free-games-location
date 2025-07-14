@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="game-list-root">
+    <div id="app" data-component="game-list">
         <game-list></game-list>
     </div>
 @endsection

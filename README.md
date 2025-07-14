@@ -32,7 +32,6 @@ Built with Laravel, Vue.js, MySQL, and Tailwind CSS, the platform integrates wit
 1. **Clone the repository**
    ```bash
    git clone https://github.com/DavidFaruntsev/free-games-location.git
-   cd free-games-location
    ```
 
 ---

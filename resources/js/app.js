@@ -1,15 +1,24 @@
 import './bootstrap';
-import { createApp } from 'vue';
+import { createApp, h } from 'vue';
 import GameList from './components/GameList.vue';
 import '../css/app.css';
-
-import VueAwesomePaginate from 'vue-awesome-paginate'
 import 'vue-awesome-paginate/dist/style.css'
+import RegisterForm from "./components/RegisterForm.vue";
 
-const el = document.getElementById('game-list-root')
+const components = {
+    'game-list': GameList,
+    'register-form': RegisterForm,
+}
 
-const app = createApp({})
+const el = document.getElementById('app')
 
-app.use(VueAwesomePaginate)
+if (el) {
+    const name = el.dataset.component
+    const Component = components[name]
 
-app.component('game-list', GameList).mount(el)
+    if (Component) {
+        createApp({
+            render: () => h(Component)
+        }).mount(el)
+    }
+}
