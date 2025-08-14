@@ -1,6 +1,8 @@
 <template>
     <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
+
         <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+
         <form @submit.prevent="handleRegister" class="space-y-4">
             <input
                 v-model="form.username"
@@ -9,6 +11,7 @@
                 required
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
+
             <input
                 v-model="form.email"
                 type="email"
@@ -16,6 +19,7 @@
                 required
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
+
             <input
                 v-model="form.password"
                 type="password"
@@ -23,15 +27,18 @@
                 required
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
+
             <button
                 type="submit"
                 :disabled="isLoading"
-                class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition disabled:opacity-50"
+                class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition disabled:opacity-50"
             >
                 {{ isLoading ? 'Registering...' : 'Register' }}
             </button>
+
             <p v-if="error" class="text-red-500 text-sm text-center">{{ error }}</p>
         </form>
+
     </div>
 </template>
 

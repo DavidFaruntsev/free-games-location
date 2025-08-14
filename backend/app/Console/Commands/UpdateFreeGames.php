@@ -15,14 +15,14 @@ class UpdateFreeGames extends Command
      *
      * @var string
      */
-    protected $signature = 'freegame:update-free-games';
+    protected $signature = 'freegame:update-free-free-games';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Retrieve all games from FreeToGame API';
+    protected $description = 'Retrieve all free-games from FreeToGame API';
 
     public function __construct(
         protected FreeToGameService $freeToGameService,

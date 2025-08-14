@@ -19,12 +19,12 @@ class ThreadFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title,
+            'title' => fake()->catchPhrase,
             'description' => fake()->paragraph,
             'slug' => fake()->slug,
             'locked' => false,
-            'user_id' => User::factory(),
-            'free_game_id' => FreeGame::factory(),
+            'user_id' => User::inRandomOrder()->first()?->id,
+            'free_game_id' => FreeGame::inRandomOrder()->first()?->id,
         ];
     }
 }

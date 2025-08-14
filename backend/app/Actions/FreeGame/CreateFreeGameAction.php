@@ -11,7 +11,7 @@ class CreateFreeGameAction
     private FreeGame $freeGame;
 
     /**
-     * Constructor
+     *
      */
     public function __construct()
     {

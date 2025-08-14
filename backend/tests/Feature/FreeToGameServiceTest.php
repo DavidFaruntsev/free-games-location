@@ -16,7 +16,7 @@ class FreeToGameServiceTest extends TestCase
     {
         parent::setUp();
 
-        // Make two fake games
+        // Make two fake free-games
         $this->fakeGames = [
             [
                 'id' => 1234,
@@ -59,7 +59,7 @@ class FreeToGameServiceTest extends TestCase
                 Http::response($this->fakeGames, 200),
         ]);
 
-        // Get free games from API
+        // Get free free-games from API
         $result = $this->service->allFreeGames();
 
         // Asserts

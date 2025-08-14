@@ -22,9 +22,13 @@ class Thread extends Model
         'description',
         'slug',
         'locked',
+        'user_id',
+        'free_game_id',
     ];
 
     /**
+     * The user who created this thread.
+     *
      * @return BelongsTo<User>
      */
     public function user(): BelongsTo
@@ -33,6 +37,8 @@ class Thread extends Model
     }
 
     /**
+     * The free game this thread is related to.
+     *
      * @return BelongsTo<FreeGame>
      */
     public function freeGame(): BelongsTo
@@ -41,6 +47,8 @@ class Thread extends Model
     }
 
     /**
+     * All posts within this thread.
+     *
      * @return HasMany<Post>
      */
     public function posts(): HasMany

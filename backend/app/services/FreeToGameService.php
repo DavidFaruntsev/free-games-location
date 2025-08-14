@@ -20,7 +20,7 @@ class FreeToGameService
     }
 
     /**
-     * Retrieve a full list of games from the FreeToGame API.
+     * Retrieve a full list of free-games from the FreeToGame API.
      *
      * @return Collection Laravel collection of game data.
      */
@@ -29,5 +29,17 @@ class FreeToGameService
         $allGamesEndpoint = config('freetogame.endpoints.all_games');
         $allGamesData = $this->fetchGamesData($allGamesEndpoint);
         return collect($allGamesData);
+    }
+
+    /**
+     * Get one specific game.
+     *
+     * @param int $gameId
+     * @return array
+     */
+    public function specificFreeGame($gameId): array
+    {
+        $endpoint = config('freetogame.endpoints.specific_game') . urlencode($gameId);
+        return $this->fetchGamesData($endpoint);
     }
 }

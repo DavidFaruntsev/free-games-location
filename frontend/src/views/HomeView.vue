@@ -1,9 +1,9 @@
 <template>
-  <main>
-    <GameList />
-  </main>
+    <main>
+        <FreeGameList />
+    </main>
 </template>
 
 <script setup>
-import GameList from '@/components/games/GameList.vue';
+import FreeGameList from '@/components/free-games/FreeGameList.vue';
 </script>

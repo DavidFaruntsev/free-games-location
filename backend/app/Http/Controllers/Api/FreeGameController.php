@@ -4,49 +4,42 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FreeGameResource;
+use App\Http\Resources\SpecificGameResource;
 use App\Models\FreeGame;
-use Illuminate\Http\Request;
+use App\services\FreeToGameService;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class FreeGameController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Constructor.
+     *
+     * @param FreeToGameService $freeToGameService
      */
-    public function index()
+    public function __construct(
+        private FreeToGameService $freeToGameService,
+    ){}
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return AnonymousResourceCollection
+     */
+    public function index(): AnonymousResourceCollection
     {
         $allFreeGames = FreeGame::paginate(15);
         return FreeGameResource::collection($allFreeGames);
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
+     *
+     * @param FreeGame $freegame
+     * @return SpecificGameResource
      */
-    public function show(string $id)
+    public function show(FreeGame $freegame): SpecificGameResource
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $specificGame = $this->freeToGameService->specificFreeGame($freegame->game_id);
+        return new SpecificGameResource($specificGame);
     }
 }

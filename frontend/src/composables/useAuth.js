@@ -1,112 +1,137 @@
 import { ref, computed, readonly } from 'vue';
-import { useRouter } from 'vue-router';
 import api from '@/config/api.js';
 
-// Global state
 const user = ref(null);
 const token = ref(localStorage.getItem('token'));
 const isLoading = ref(false);
 
+/**
+ * Authentication composable for managing user state and API auth actions.
+ *
+ * @returns {{
+ *   user: import('vue').Ref<Object|null>,
+ *   token: import('vue').Ref<string|null>,
+ *   isLoading: import('vue').Ref<boolean>,
+ *   isAuthenticated: import('vue').ComputedRef<boolean>,
+ *   isGuest: import('vue').ComputedRef<boolean>,
+ *   register: (formData: Object) => Promise<Object>,
+ *   login: (formData: Object) => Promise<Object>,
+ *   logout: () => Promise<void>,
+ *   getCurrentUser: () => Promise<void>,
+ *   initAuth: () => Promise<void>
+ * }}
+ */
 export function useAuth() {
-    const router = useRouter();
-
-    // Computed properties
+    /**
+     * Whether the current user is authenticated.
+     * @type {import('vue').ComputedRef<boolean>}
+     */
     const isAuthenticated = computed(() => !!token.value);
+
+    /**
+     * Whether the current user is not authenticated.
+     * @type {import('vue').ComputedRef<boolean>}
+     */
     const isGuest = computed(() => !token.value);
 
-    // Save auth data (after login/register)
-    const setAuth = (authData) => {
-        // Save token and user
+    /**
+     * Save auth token and user info in state and localStorage.
+     * @param {{ token: string, user: Object }} authData
+     */
+    const setAuth = authData => {
         token.value = authData.token;
         user.value = authData.user;
-
-        // Store token in localStorage (persistent)
         localStorage.setItem('token', authData.token);
     };
 
-    // Clear auth data (on logout)
+    /**
+     * Clear auth token and user info from state and localStorage.
+     */
     const clearAuth = () => {
         token.value = null;
         user.value = null;
         localStorage.removeItem('token');
     };
 
-    // Register function
-    const register = async (formData) => {
+    /**
+     * Register a new user.
+     * @param {Object} formData - Registration form data.
+     * @returns {Promise<Object>} The API response data.
+     */
+    const register = async formData => {
         isLoading.value = true;
         try {
-            // Use api instance - baseURL is already set
             const response = await api.post('/register', formData);
             setAuth(response.data);
             return response.data;
-        } catch (error) {
-            throw error;
         } finally {
             isLoading.value = false;
         }
     };
 
-    // Login function
-    const login = async (formData) => {
+    /**
+     * Log in a user.
+     * @param {Object} formData - Login form data.
+     * @returns {Promise<Object>} The API response data.
+     */
+    const login = async formData => {
         isLoading.value = true;
         try {
             const response = await api.post('/login', formData);
             setAuth(response.data);
             return response.data;
-        } catch (error) {
-            throw error;
         } finally {
             isLoading.value = false;
         }
     };
 
-    // Logout function
+    /**
+     * Log out the current user.
+     * @returns {Promise<void>}
+     */
     const logout = async () => {
         isLoading.value = true;
         try {
             await api.post('/logout');
-        } catch (error) {
-            console.error('Logout error:', error);
+        } catch (e) {
+            console.error('Logout error:', e);
         } finally {
             clearAuth();
             isLoading.value = false;
-            router.push('/login');
         }
     };
 
-    // Get current user (for when page is refreshed)
+    /**
+     * Fetch the current authenticated user's details.
+     * @returns {Promise<void>}
+     */
     const getCurrentUser = async () => {
         if (!token.value) return;
-
         isLoading.value = true;
         try {
-            const response = await api.get('/user');
-            user.value = response.data;
-        } catch (error) {
+            const { data } = await api.get('/me');
+            user.value = data.data;
+        } catch {
             clearAuth();
         } finally {
             isLoading.value = false;
         }
     };
 
-    // Initialize auth (on app start)
+    /**
+     * Initialize authentication by loading the current user if a token exists.
+     * @returns {Promise<void>}
+     */
     const initAuth = async () => {
-        if (token.value) {
-            await getCurrentUser();
-        }
+        if (token.value) await getCurrentUser();
     };
 
     return {
-        // State (readonly)
         user: readonly(user),
         token: readonly(token),
         isLoading: readonly(isLoading),
-
-        // Computed
         isAuthenticated,
         isGuest,
-
-        // Methods
         register,
         login,
         logout,

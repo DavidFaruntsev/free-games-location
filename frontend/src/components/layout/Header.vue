@@ -1,15 +1,18 @@
 <template>
-    <header class="bg-gray-800 flex items-center justify-between px-4">
+    <header class="bg-blue-500 flex items-center justify-between px-4 sticky top-0">
+
         <div class="flex items-center">
             <img
                 alt="Vue logo"
                 class="logo"
-                src="../../assets/logo.svg"
+                src="@/assets/FreeGamesLocationLogo.png"
                 width="125"
                 height="125"
             />
+
             <nav class="text-white flex space-x-4 ml-6">
                 <RouterLink to="/" class="hover:text-gray-300 transition">Home</RouterLink>
+                <RouterLink to="/threads" class="hover:text-gray-300 transition">Threads</RouterLink>
                 <RouterLink to="/about" class="hover:text-gray-300 transition">About</RouterLink>
             </nav>
         </div>
@@ -18,6 +21,7 @@
             <GuestNavigation v-if="isGuest" />
             <AuthenticatedNavigation v-if="isAuthenticated" />
         </nav>
+
     </header>
 </template>
 

@@ -28,6 +28,8 @@ class Post extends Model
     ];
 
     /**
+     * The user who created this post.
+     *
      * @return BelongsTo<User>
      */
     public function user(): BelongsTo
@@ -36,6 +38,8 @@ class Post extends Model
     }
 
     /**
+     * The thread this post belongs to.
+     *
      * @return BelongsTo<Thread>
      */
     public function thread(): BelongsTo
@@ -44,6 +48,8 @@ class Post extends Model
     }
 
     /**
+     * The parent post.
+     *
      * @return BelongsTo<Post>
      */
     public function parent(): BelongsTo
@@ -52,6 +58,8 @@ class Post extends Model
     }
 
     /**
+     * The replies to this post.
+     *
      * @return HasMany<Post>
      */
     public function children(): HasMany

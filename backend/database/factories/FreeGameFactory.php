@@ -19,7 +19,7 @@ class FreeGameFactory extends Factory
         return [
             'game_id' => fake()->numberBetween(1000, 9999),
             'title' => fake()->sentence(3),
-            'thumbnail' => fake()->imageUrl(640, 480, 'games', true),
+            'thumbnail' => fake()->imageUrl(640, 480, 'free-games', true),
             'short_description' => fake()->text(150),
             'game_url' => fake()->url(),
             'genre' => fake()->word(),

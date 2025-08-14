@@ -1,10 +1,14 @@
 <template>
     <div class="min-h-screen flex flex-col">
+
         <Header />
-        <main class="flex-grow">
+
+        <main class="flex-1 flex flex-col min-h-0">
             <RouterView />
         </main>
+
         <Footer />
+
     </div>
 </template>
 

@@ -3,13 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Thread;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ThreadSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the database with demo threads.
      */
     public function run(): void
     {

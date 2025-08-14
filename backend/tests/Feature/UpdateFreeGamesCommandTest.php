@@ -46,7 +46,7 @@ class UpdateFreeGamesCommandTest extends TestCase
     public function test_command_calls_free_to_game_service_and_saves_games()
     {
         // Call command
-        Artisan::call('freegame:update-free-games');
+        Artisan::call('freegame:update-free-free-games');
 
         // Assert
         $this->assertDatabaseHas('free_games', [

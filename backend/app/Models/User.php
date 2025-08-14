@@ -53,6 +53,8 @@ class User extends Authenticatable
     }
 
     /**
+     * The free games saved by the user.
+     *
      * @return BelongsToMany<FreeGame>
      */
     public function freeGames(): BelongsToMany
@@ -61,6 +63,8 @@ class User extends Authenticatable
     }
 
     /**
+     * The threads created by the user.
+     *
      * @return HasMany<Thread>
      */
     public function threads(): HasMany
@@ -69,6 +73,8 @@ class User extends Authenticatable
     }
 
     /**
+     * The posts created by the user.
+     *
      * @return HasMany<Post>
      */
     public function posts(): HasMany

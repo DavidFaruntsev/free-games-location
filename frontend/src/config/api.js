@@ -2,7 +2,11 @@ import axios from 'axios';
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-// One central Axios instance for all API calls
+/**
+ * Axios instance configured for the application's API.
+ *
+ * @type {import('axios').AxiosInstance}
+ */
 const api = axios.create({
     baseURL: `${API_BASE_URL}/api`,
     withCredentials: true,
@@ -11,7 +15,13 @@ const api = axios.create({
     }
 });
 
-// Request interceptor - automatically adds token if it exists
+/**
+ * Request interceptor that automatically attaches the Bearer token
+ * from localStorage to the Authorization header if available.
+ *
+ * @param {import('axios').InternalAxiosRequestConfig} config - The Axios request configuration object.
+ * @returns {import('axios').InternalAxiosRequestConfig} The updated Axios request configuration.
+ */
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -22,7 +32,15 @@ api.interceptors.request.use((config) => {
     return Promise.reject(error);
 });
 
-// Response interceptor - automatically handles 401 errors (logged out)
+/**
+ * Response interceptor that handles global API response behavior.
+ *
+ * - If a 401 Unauthorized response is received, the token is removed from storage
+ *   and the default Authorization header is deleted.
+ *
+ * @param {import('axios').AxiosResponse} response - The successful Axios response.
+ * @returns {import('axios').AxiosResponse} The unmodified Axios response.
+ */
 api.interceptors.response.use(
     (response) => response,
     (error) => {

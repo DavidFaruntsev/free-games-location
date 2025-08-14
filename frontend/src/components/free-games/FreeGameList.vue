@@ -1,9 +1,10 @@
 <template>
-    <div>
-        <h1 class="text-2xl font-bold mb-4">🎮 Games</h1>
+    <div class="p-4 max-w-7xl mx-auto">
+
+        <h1 class="text-2xl font-bold mb-4">🎮 Explore free games</h1>
 
         <div class="grid grid-cols-3 gap-4">
-            <GameCard v-for="game in games" :key="game.id" :game="game"/>
+            <FreeGameCard v-for="game in games" :key="game.id" :game="game" />
         </div>
 
         <div class="mt-6 flex justify-center">
@@ -17,12 +18,13 @@
                 active-page-class="bg-blue-500 text-white font-bold border-blue-500"
             />
         </div>
+
     </div>
 </template>
 
 <script setup>
 import {ref, onMounted} from 'vue';
-import GameCard from '@/components/games/GameCard.vue';
+import FreeGameCard from '@/components/free-games/FreeGameCard.vue';
 import {VueAwesomePaginate} from "vue-awesome-paginate";
 import api from '@/config/api.js';
 
@@ -37,7 +39,7 @@ const paginationMeta = ref({
 const currentPage = ref(1);
 
 const loadPage = async (page = 1) => {
-    const response = await api.get(`/games?page=${page}`);
+    const response = await api.get(`/freegames?page=${page}`);
     games.value = response.data.data;
     paginationMeta.value = {
         total: response.data.meta.total,
@@ -45,7 +47,7 @@ const loadPage = async (page = 1) => {
         current_page: response.data.meta.current_page,
     };
     currentPage.value = page;
-}
+};
 
 onMounted(() => loadPage());
 </script>

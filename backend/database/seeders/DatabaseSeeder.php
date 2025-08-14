@@ -4,23 +4,16 @@ namespace Database\Seeders;
 
 use App\Models\FreeGame;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed the application's database with initial test data.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'username' => 'testuser',
-            'email' => 'test@example.com',
-            'role' => 'user',
-        ]);
+         User::factory(5)->create();
 
         $this->call(FreeGameSeeder::class);
 

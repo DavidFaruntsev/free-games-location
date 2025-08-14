@@ -20,11 +20,11 @@ class PostFactory extends Factory
     {
         return [
             'body' => fake()->paragraph,
-            'image' => fake()->imageUrl(640, 480, 'cats', true),
+            'image' => 'https://picsum.photos/640/480',
             'likes' => fake()->numberBetween(0, 100),
             'dislikes' => fake()->numberBetween(0, 50),
-            'thread_id' => Thread::factory(),
-            'user_id' => User::factory(),
+            'thread_id' => Thread::inRandomOrder()->value('id'),
+            'user_id'   => User::inRandomOrder()->value('id'),
             'parent_id' => null,
         ];
     }
